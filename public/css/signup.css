@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+span{
+    color:#1D024A ;
+}
+img{
+    margin-top: 70px;
+    height: 95vh;
+}
+h5{
+    font-size: 30px;
+    margin-left: 100px;
+}
+.container{
+    display: flex;
+}
+.image{
+    width: 50%;
+}
+h2{
+    color: #1D024A;
+    font-size: 35px;
+}
+.all{
+    margin-top: 140px;
+}
+p{
+    color: grey;
+    margin-top: 20px;
+}
+input{
+    height: 40px;
+    width: 500px;
+    margin-top: 25px;
+    border: transparent;
+    border-bottom: 1px solid grey;
+    font-size: 18px;
+}
+button{
+    height: 40px;
+    width: 500px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #1D024A;
+    cursor: pointer;
+    border-color: transparent;
+    border-radius: 10px;
+}
+.input{
+    height: 40px;
+    width: 500px;
+    margin-top: 25px;
+    font-size: 18px;
+    border:1px solid grey;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.file{
+    background-color: white;
+    cursor: pointer;
+    color: red;
+    border-color: transparent;
+}
+label{
+    font-size: 18px;
+}

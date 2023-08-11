@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css" type="text/css">
+    <title>Login page</title>
+    
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/">
+            <img src="/images/travelogo.png" alt="LOGO" />
+        </a>
+        <div class="ulAndBtn">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/book/userProfile">About</a></li>
+            <li><a href="/book/booking">Book</a></li>
+            <li><a href="/client/contact">Contact</a></li>
+        </ul>
+
+        <a href="/client/signUp">
+            <button>Get started</button>
+        </a>
+    </div>
+    </nav>
+    <div class="container">
+        <div class="image">
+            <img src="/images/travel-and-tourism-vector-10096717.jpg" alt="images">
+            <h5>Untitled allows us to <span>Streamline</span> <br>
+                our planning and scheduling so <br>
+            we can focus on <span>Simply creating</span></h5>
+        </div>
+        <div class="all">
+            <h2>Log into your account</h2>
+            <p>Continue with you 30 day free trial</p>
+            <form action="/client/login/signin" method="post">
+                <input type="email" name="email"  placeholder="Email address"> <br>
+                <input type="password" name="password" placeholder="password"><br>
+
+                <button type="submit">Login</button><br>
+                <button class="input">Login with Google</button>
+            </form>
+          <p>Don't have an account? <a href="./signup.ejs"><span>Sign Up</span></a></p>
+        </div>
+    </div>
+</body>
+</html>

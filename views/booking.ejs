@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/booking.css">
+     <title>Booking</title>
+
+</head>
+
+<body>
+     <nav class="navbar">
+          <a href="/">
+              <img src="/images/travelogo.png" alt="LOGO" />
+          </a>
+          <div class="ulAndBtn">
+          <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/book/userProfile">About</a></li>
+              <li><a href="/book/booking">Book</a></li>
+              <li><a href="/client/contact">Contact</a></li>
+          </ul>
+  
+          <a href="/client/signUp">
+              <button>Get started</button>
+          </a>
+      </div>
+      </nav>
+     <div class="container">
+     <h1>Booking</h1>
+     <p>Am a tourist</p>
+     <h1>Details</h1>
+     <form action="/book/booking/reserve" method="post">
+     <ul>
+          <li>
+               <h3>Email: </h3>
+               <input type="email" placeholder="enter your email" name="email">
+          </li>
+          <li>
+               <h3>Location</h3>
+               <input type="text" placeholder="Enter a place you want to visit" name="destination">
+          </li>
+          <li>
+               <h3>Date</h3>
+               <input type="date" name="time" placeholder="date you will go to the trip">
+          </li>
+          <li>
+               <h3>Number of people</h3>
+               <input type="number" name="numberOfPeople" placeholder="number of people you will come with">
+          </li>
+          <li>
+               <h3>Extra details</h3>
+               <input type="text" placeholder="you can extra details if you you want any other specification"
+                    name="details">
+          </li>
+     </ul>
+     <button type="submit">Book now</button>
+</form>
+</div>
+</body>
+
+</html>

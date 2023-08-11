@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/signup.css" type="text/css">
+    <title>Sign up page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="/images/travel-and-tourism-vector-10096717.jpg" alt="">
+        </div>
+        <div class="all">
+            <h2>Create an account</h2>
+            <p>on Travel</p>
+            <form action="/client/addClient" method="POST">
+                <input type="text" name="name"  placeholder="Name"> <br>
+                <input type="text" name="email"  placeholder="Email"> <br>
+                <div class="email error"></div>
+                <input type="text" name="phoneNumber"  placeholder="Phone Number"> <br>
+                <div class="tel error"></div>
+                <input type="password" name="password"  placeholder="password"><br>
+                <div class="password error"></div>
+
+                <!-- <label for="">Upload photo: </label>
+                <input type="file" name="photo" class="file"> -->
+                <button>Sign In</button><br>
+                <button class="input" type="submit">Sign in with Google</button>
+            </form>
+            <p>Already have an accout? <a href="/client/login">Login</a></p>
+            
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+
+        const telError
+
+    form.addEventListener('submit', async(e)=>{
+        e.preventDefault();
+
+        let name = form.name.value;        
+        let email = form.email.value;        
+        let password = form.password.value;        
+        let phoneNumber = form.phoneNumber.value; 
+        
+        console.log(name, email, password, phoneNumber)
+        try {
+            const res = await fetch('/client/addClient', {
+                method: 'POST',
+                body: JSON.stringify({name, email, password, phoneNumber}),
+                headers: {
+                    'Content-Type': "application/json",
+                   
+                }
+            })
+
+            const data = await res.json();
+            console.log(data.email)
+            console.log(data)
+            
+                
+            
+
+            
+        } catch (error) {
+            console.log(error) 
+        }
+    })
+    
+    </script>
+</body>
+</html>

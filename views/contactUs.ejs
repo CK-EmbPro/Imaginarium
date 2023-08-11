@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/css/contactUs.css">
+ 
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/">
+            <img src="/images/travelogo.png" alt="LOGO" />
+        </a>
+        <div class="ulAndBtn">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/book/userProfile">About</a></li>
+            <li><a href="/book/booking">Book</a></li>
+            <li><a href="/client/contact">Contact</a></li>
+        </ul>
+
+        <a href="/client/signUp">
+            <button>Get started</button>
+        </a>
+    </div>
+    </nav>
+
+    <div class="container">
+            <div class="content">
+            <h1 class="heading">Let's work together!</h1>
+            <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                 Incidunt doloribus molestias, eaque et obcaecati
+                voluptate tempora facilis, enim officia sequi nemo atque!
+                 Non atque ipsa itaque enim vitae est eligendi.
+            </p>
+
+            
+            <form action="/client/addContact" method="post" class="qns">
+
+
+            <label for="name">what's your name</label><br><br>
+            <input type="text" id="name" name="name" placeholder="Full Names"><br><br><br><br>
+
+            <label for="email">What's your email address</label><br><br>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com"><br><br><br><br>
+
+
+            <label for="phone">What's your phone number</label><br><br>
+            <input type="number" id="phone" name="phoneNumber" placeholder="Phone number" size="10"><br><br><br><br>
+
+
+            <label for="company">What's your company/Organization name</label><br><br>
+            <select name="companyName" id="company">
+                <option value="Choose your company">Choose your company</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Business Technology">Business Technology</option>
+                <option value="Education">Education</option>
+                <option value="Agri-business">Agri-business</option>
+                <option value="Financial institution">Financial institution</option>
+                <option value="Other">Other</option>
+            </select><br><br><br><br>
+
+
+            <label for="service">What service are you looking for</label><br><br>
+            <select name="serviceName" id="service">
+                <option value="" >Select a service to be offered</option>
+                <option value="clarification on our services">Info on your services</option>
+                <option value="Booking a hotel">Hotel reservation</option>
+                <option value="Booking another touristic sites">Visit other touristic sites</option>
+                <option value="Joining VISIT-RWANDA team">Being a VISIT-RWANDA team member</option>
+            </select><br><br><br><br>
+
+
+            <label for="location">Your current location</label><br><br>
+            <input type="text" id="location" name="currLocation" placeholder="Chooose from a list here"><br><br><br><br>
+
+            <label for="message">Write us a message</label><br><br>
+            <textarea name="message" id="message"  cols="40" rows="7">Write a message to us</textarea><br><br><br><br>  
+
+
+            <button type="submit">SEND MESSAGE</button>
+
+        </form>
+       
+        <div class="aside">
+            <img src="/images/travelogo.png" alt="The image" class="image">
+            <p>CALL US</p><br>
+            <p>+284775949 896833</p><br>
+            <p>+332822324 788768</p><br><br><br><br><br><br><br>
+            <p>ADDRESS</p>
+            <p>ALLHFLKJRHHUBJUHBLF</p>
+            <p>1098108480280824755</p>
+            <p>2364869734646947949</p>
+        </div>
+        </div>
+        <!-- <div class="footer">
+            <div>
+                <h1>Screder</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Tempora fuga velit corporis? Tempore obcaecati voluptate, 
+                    non, mollitia ab natus saepe voluptas magni molestiae adipisci
+                     laboriosam sapiente culpa, quidem aut reiciendis!</p>
+            </div>
+            <div>
+                <h1>Company</h1>
+                <p>About</p>
+                <p>Terms of use</p>
+                <p>Privacy Policy</p>
+                <p>How it works</p>
+                <p>contact us</p>
+            </div>
+            <div>
+                <h1>Support</h1>
+                <p>Support once</p>
+                <p>2nd support</p>
+                <p>Quick chat</p>
+            </div>
+            <div>
+                <h1>Contact</h1>
+                <p>Watsapp</p>
+                <p>cintact 24</p>
+                <p style="font-weight:bold; ">Follow for more</p>
+            </div>
+        </div> -->
+    </div>
+</body>
+
+</html>
