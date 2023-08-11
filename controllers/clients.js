@@ -6,9 +6,9 @@ const handleErrors = (err) => {
      console.log(err.message, err.code);
    
      const errors = {
-       email: '',
-       password: '',
-       telNumber: '',
+       emailError: '',
+       passwordError: '',
+       telNumberError: '',
      }
    
      if (err.message.includes('client validation failed')) {
@@ -18,17 +18,17 @@ const handleErrors = (err) => {
        errorMessages.forEach(errorMessage => {
          if (errorMessage.includes('email:')) {
            const email_error = errorMessage.split(':')[1].trim();
-           errors.email = email_error;
+           errors.emailError = email_error;
          }
    
          if (errorMessage.includes('phoneNumber:')) {
            const tel_error = errorMessage.split(':')[1].trim();
-           errors.telNumber = tel_error;
+           errors.telNumberError = tel_error;
          }
    
          if (errorMessage.includes('password:')) {
            const password_error = errorMessage.split(':')[1].trim();
-           errors.password = password_error;
+           errors.passwordError  = password_error;
          }
        });
    

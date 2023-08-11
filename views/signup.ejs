@@ -35,7 +35,13 @@
     <script>
         const form = document.querySelector('form');
 
-        const telError
+        const telError = document.querySelector('.tel .error');
+        const emailError = document.querySelector('.email .error');
+        const pwordError = document.querySelector('.password .error');
+
+        telError.textContent = ''
+        emailError.textContent = ''
+        pwordError.textContent = ''
 
     form.addEventListener('submit', async(e)=>{
         e.preventDefault();
@@ -57,8 +63,21 @@
             })
 
             const data = await res.json();
-            console.log(data.email)
             console.log(data)
+
+            if(data.emailError){
+                // telError.textContent = data.telError
+                // emailError.textContent = data.emailError
+                // pwordError.textContent = data.passwordError
+
+                console.log(data.emailError)
+
+            }
+
+            if(data._id){
+                alert('Registration was successful')
+                location.assign('/')
+            }
             
                 
             
