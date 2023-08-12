@@ -31,7 +31,7 @@
      <h1>Booking</h1>
      <p>Am a tourist</p>
      <h1>Details</h1>
-     <form action="/book/booking/reserve" method="post">
+     <form action="/book/booking/reserve" method="POST">
      <ul>
           <li>
                <h3>Email: </h3>
@@ -58,6 +58,38 @@
      <button type="submit">Book now</button>
 </form>
 </div>
+
+<script>
+     const form = document.querySelector('form');
+     form.addEventListener('submit', async (e) => {
+         e.preventDefault();
+         const email = form.email.value;
+         const destination = form.destination.value;
+         const time = form.time.value;
+         const numberOfPeople = form.numberOfPeople.value;
+         const details = form.details.value;
+         try {
+             const res = await fetch('/book/booking/reserve', {
+                 method: 'POST',
+                 body: JSON.stringify({ email, destination, time, numberOfPeople, details }),
+                 headers: { 'Content-Type': 'application/json' },
+             });
+ 
+             const data = await res.json();
+             console.log(data);
+             if (data.error === '') {
+                 alert('Booking successful');
+                 location.assign('/book/about');
+             } else {
+                 alert('All fields are required');
+                 location.assign('/book/booking');
+             }
+         } catch (error) {
+             console.log(error.message);
+         }
+     });
+ </script>
+ 
 </body>
 
 </html>

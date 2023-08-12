@@ -36,13 +36,56 @@
             <p>Continue with you 30 day free trial</p>
             <form action="/client/login/signin" method="post">
                 <input type="email" name="email"  placeholder="Email address"> <br>
+                <div class="email error"></div>
                 <input type="password" name="password" placeholder="password"><br>
+                <div class="pword error"></div>
 
                 <button type="submit">Login</button><br>
-                <button class="input">Login with Google</button>
+                <button class="input">Continue with Google</button>
             </form>
-          <p>Don't have an account? <a href="./signup.ejs"><span>Sign Up</span></a></p>
+          <p>Create an account <a href="/client/signUp"><span>Sign Up</span></a></p>
         </div>
     </div>
+    <script>
+        const form = document.querySelector('form');
+        const emailError = document.querySelector('.email.error');
+        const pwordError = document.querySelector('.pword.error');
+
+        form.addEventListener('submit',async(e)=>{
+            e.preventDefault();
+
+            emailError.textContent = ''
+            pwordError.textContent = ''
+
+            const email = form.email.value
+            const password = form.password.value
+
+            try {
+                const res = await fetch('/client/login/signin', {
+                method: 'POST',
+                body: JSON.stringify({email, password}),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+            const data = await res.json();
+            console.log(data);
+
+            if(data.emailError || data.passwordError){
+                emailError.textContent = data.emailError
+                pwordError.textContent = data.passwordError
+            }
+
+            if(data.user){
+                location.assign('/')
+            }
+            } catch (error) {
+
+                console.log(error)
+            }
+           
+        })
+    </script>
 </body>
 </html>

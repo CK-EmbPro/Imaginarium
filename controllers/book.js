@@ -2,35 +2,17 @@ const Reservation = require('../models/reservationScheme')
 
 const handleErrors = (err) => {
      console.log(err.message, err.code);
-     let errors = {email: '', password: ''}
- 
-     // Incorrect email
-     if(err.message === 'incorrect email'){
-         errors.email = 'that email is not registered'
+     const errors= {error: ''}
+     if (err.message.includes('Reservation validation failed')) {
+          errors.error ="All fields are required"
+    
      }
- 
-     // Incorrect password
- 
-     if(err.message === 'incorrect password'){
-         errors.password = "that password is not correct"
-     }
- 
-     // duplication errors
-     if(err.code === 11000){
-         errors.email = "Email already exists!"
-     }
-     
-     // validation errors
- 
-     if(err.message.includes('user validation failed')){
-         console.log(Object.values(err.errors).forEach(({properties}) => {
-             errors[properties.path] = properties.message
-         }))
-     }
+    
  
      return errors;
  }
 exports.reservePlace = async (req, res) =>{
+     console.log(req.body)
      const {email, destination, time, numberOfPeople, details} = req.body
      const newReservation = new Reservation({
           email,
@@ -41,8 +23,8 @@ exports.reservePlace = async (req, res) =>{
      })
      await newReservation.save()
      .then(data =>{
-     res.redirect('/book/userProfile')
-          
+     
+     res.json(data);     
         
      }).catch(err =>{
           const errors = handleErrors(err)

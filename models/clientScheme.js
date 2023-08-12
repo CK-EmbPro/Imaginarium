@@ -34,14 +34,14 @@ clientScheme.pre('save', async function(next){
     next()
 })
 
-clientScheme.statics.login = async (email, password) =>{
+clientScheme.statics.login = async function (email, password){
      const user = await this.findOne({email})
     if(user){
-        const auth = bcrypt.compare(password, user.password)
+        const auth = await bcrypt.compare(password, user.password)
         if(auth){ // To mean if pre-hashed password matches with stored password
             return user
         }
-        throw Error('incorrect password')
+        throw Error('Incorrect password')
     }
     throw Error('Incorrect email')
 }

@@ -3,7 +3,7 @@ const ReserveSchema= new mongoose.Schema({
      email: {
           type: String,
           required: true,
-          unique: true
+          
      },
      numberOfPeople: {
           type: Number,
@@ -14,7 +14,7 @@ const ReserveSchema= new mongoose.Schema({
           required: true
      },
      time: {
-          type: String,
+          type: Date,
           required: true
      },
      details: {

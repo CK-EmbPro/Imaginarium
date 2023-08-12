@@ -25,7 +25,7 @@
                 <!-- <label for="">Upload photo: </label>
                 <input type="file" name="photo" class="file"> -->
                 <button>Sign In</button><br>
-                <button class="input" type="submit">Sign in with Google</button>
+                <button class="input" type="submit">Continue with Google</button>
             </form>
             <p>Already have an accout? <a href="/client/login">Login</a></p>
             
@@ -33,61 +33,57 @@
     </div>
 
     <script>
-        const form = document.querySelector('form');
-
-        const telError = document.querySelector('.tel .error');
-        const emailError = document.querySelector('.email .error');
-        const pwordError = document.querySelector('.password .error');
-
-        telError.textContent = ''
-        emailError.textContent = ''
-        pwordError.textContent = ''
-
-    form.addEventListener('submit', async(e)=>{
-        e.preventDefault();
-
-        let name = form.name.value;        
-        let email = form.email.value;        
-        let password = form.password.value;        
-        let phoneNumber = form.phoneNumber.value; 
-        
-        console.log(name, email, password, phoneNumber)
-        try {
-            const res = await fetch('/client/addClient', {
-                method: 'POST',
-                body: JSON.stringify({name, email, password, phoneNumber}),
-                headers: {
-                    'Content-Type': "application/json",
-                   
-                }
-            })
-
-            const data = await res.json();
-            console.log(data)
-
-            if(data.emailError){
-                // telError.textContent = data.telError
-                // emailError.textContent = data.emailError
-                // pwordError.textContent = data.passwordError
-
-                console.log(data.emailError)
-
-            }
-
-            if(data._id){
-                alert('Registration was successful')
-                location.assign('/')
-            }
-            
-                
-            
-
-            
-        } catch (error) {
-            console.log(error) 
-        }
-    })
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
     
+            const telError = document.querySelector('.tel.error');
+            const emailError = document.querySelector('.email.error');
+            const pwordError = document.querySelector('.password.error');
+    
+            console.log(telError);
+    
+            
+    
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+    
+                let name = form.name.value;
+                let email = form.email.value;
+                let password = form.password.value;
+                let phoneNumber = form.phoneNumber.value;
+
+                telError.textContent = ''; // Fix: Assigning value to telError.innerHTML
+            emailError.textContent = '';
+            pwordError.textContent = '';
+    
+                console.log(name, email, password, phoneNumber);
+                try {
+                    const res = await fetch('/client/addClient', {
+                        method: 'POST',
+                        body: JSON.stringify({ name, email, password, phoneNumber }),
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+    
+                    const data = await res.json();
+                    if (data.emailError || data.passwordError || data.telNumberError){
+                        
+                        emailError.textContent = data.emailError;
+                        telError.textContent = data.telNumberError;
+                        pwordError.textContent = data.passwordError;
+                    }
+    
+                    if (data._id) {
+                        alert("Registation performed successfully")
+                        location.assign('/')
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            });
+        });
     </script>
+    
 </body>
 </html>

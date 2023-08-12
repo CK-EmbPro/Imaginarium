@@ -8,7 +8,7 @@ router.get('/booking', (req,res)=>{
     res.render('booking.ejs')
 })
 
-router.get('/userProfile', (req, res)=>{
+router.get('/about', (req, res)=>{
     res.render('about.ejs')
 })
 //reserve a place
