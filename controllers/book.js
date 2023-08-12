@@ -1,4 +1,6 @@
 const Reservation = require('../models/reservationScheme')
+const Client = require('../models/clientScheme')
+
 
 const handleErrors = (err) => {
      console.log(err.message, err.code);
@@ -59,3 +61,36 @@ exports.cancel = async (req, res) => {
                });
           });
 };
+
+
+module.exports.contactHandler = async (req, res) => {
+     try {
+
+
+          const { name, email, phoneNumber, companyName, serviceName, currLocation, message } = req.body
+          const contactData = new ContactSchema({
+               name,
+               email,
+               phoneNumber,
+               serviceName,
+               companyName,
+               currLocation,
+               message,
+          })
+
+          await contactData.save()
+               .then((data) => {
+                    res.redirect('/client/contact')
+               })
+
+               .catch(err => res.status(400).render())
+
+     } catch (error) {
+          res.status(500).json({ message: "Internal server error", error: error.message })
+     }
+}
+
+
+exports.contactPage = async (req, res) => {
+     res.render('contactUs.ejs')
+}

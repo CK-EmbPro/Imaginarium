@@ -5,17 +5,18 @@ const mongoose = require("mongoose")
 const dbConnect = require('./dbConnect.js')
 const bookRoute = require('./routes/bookRoute.js')
 const clientRoute = require('./routes/clientRoute.js');
-const checkUser = require('./middlewares/authMiddleware.js');
+const authMiddleware = require('./middlewares/authMiddleware.js');
 const cookieParser = require('cookie-parser');
 const app = express()
 
 app.use(cookieParser())
-app.use('*', checkUser)
+app.use('*', authMiddleware.checkUser)
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use('/book', bookRoute)
+
 app.use('/client', clientRoute)
 mongoose.set('strictQuery', false)
 mongoose.connect(dbConnect.DATABASE_URI, {

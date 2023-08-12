@@ -67,7 +67,7 @@ const handleLoginErrors = (err) => {
      if (err.message === 'Incorrect password') {
           errors.passwordError = "that password is not correct"
      }
-     
+
 
      // validation errors
 
@@ -210,9 +210,7 @@ exports.signUpPage = async (req, res) => {
      res.render('signup.ejs')
 }
 
-exports.contactPage = async (req, res) => {
-     res.render('contactUs.ejs')
-}
+
 
 exports.signUpPage = async (req, res) => {
      res.render('signup.ejs')
@@ -222,30 +220,3 @@ exports.userProfilePage = async (req, res) => {
      res.render('about.ejs')
 }
 
-
-module.exports.contactHandler = async (req, res) => {
-     try {
-
-
-          const { name, email, phoneNumber, companyName, serviceName, currLocation, message } = req.body
-          const contactData = new ContactSchema({
-               name,
-               email,
-               phoneNumber,
-               serviceName,
-               companyName,
-               currLocation,
-               message,
-          })
-
-          await contactData.save()
-               .then((data) => {
-                    res.redirect('/client/contact')
-               })
-
-               .catch(err => res.status(400).render())
-
-     } catch (error) {
-          res.status(500).json({ message: "Internal server error", error: error.message })
-     }
-}
